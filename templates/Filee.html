@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Flask application</title>
+        <style>
+            body {
+                background-image: url('D:/programming_Vscode/static/uploads/1596.jpg');
+                background-size: cover;
+                background-position: center;
+                height: 100vh;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <br>
+        <div style="text-align:center;background-color:black;width:800px;
+        border:2px solid white;height:80px;margin:auto">
+        <h1 style="color:white;text-align:center;">
+            <i>Water segmentation with Deep Learning</i></h1>
+        </div><br>
+        <form style="text-align:center;background-color:aquamarine;
+        border:2px solid white;width:800px;margin:auto;" method="POST" action="/" 
+        enctype="multipart/form-data">
+        <br><br>
+            <label for="ims" style="color:black;text-align:center;font-size:x-large"><b>Submit image :</b></label>
+            <input type="file" id="ims" name="image">
+            <br><br>
+            <label for="cho" style="color:black;text-align:center;font-size:x-large"><b>choose target:</b></label>
+            <select id="cho" name="Target">
+                <option value="Detect Water">Detect Water</option>
+                <option value="Band1">Band 1 (Coastal Aerosol)</option>
+                <option value="RGB">RGB (Band 2,3,and 4)</option>
+                <option value="Band5">Band 5 (NIR)</option>
+                <option value="Band6">Band 6 (SWIR-1)</option>
+                <option value="Band7">Band 7 (SWIR-2)</option>
+                <option value="Band8">Band 8 (QA Band)</option>
+                <option value="Band9">Band 9 (MERIT DEM Band)</option>
+                <option value="Band10">Band 10 (Copernicus DEM)</option>
+                <option value="Band11">Band 11 (ESA World Cover Map Band)</option>
+                <option value="Band12">Band 12 (Water Occurrence Probability)</option>
+            </select><br><br>
+            <input type="submit" value="Get the output">
+        <br><br>
+        </form>
+        </div>
+        <div style="text-align:center;">
+            {% if imagee %}
+                <h2>Result Image:</h2>
+                <img src="{{ imagee }}" alt="Uploaded Image" style="max-width:500px;color:white">
+            {% endif %}
+        </div>
+    </body>
+</html>
