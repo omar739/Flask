@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Application</title>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='uploads/1596.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            width: 800px;
+            margin: auto;
+        }
+        .header {
+            background-color: black;
+            border: 2px solid white;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header h1 {
+            color: white;
+            font-size: 24px;
+        }
+        .upload-form {
+            background-color: aquamarine;
+            border: 2px solid white;
+            padding: 20px;
+        }
+        .result-image {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br><br>
+        <div class="header">
+            <h1><i>Water Segmentation with Deep Learning</i></h1>
+        </div>
+        <br>
+        <form class="upload-form" method="POST" action="/" enctype="multipart/form-data">
+            <label for="ims" style="font-size: x-large;"><b>Submit image:</b></label>
+            <input type="file" id="ims" name="image" required>
+            <br><br>
+            <label for="cho" style="font-size: x-large;"><b>Choose target:</b></label>
+            <select id="cho" name="Target">
+                <option value="Detect Water">Detect Water</option>
+                <option value="Band1">Band 1 (Coastal Aerosol)</option>
+                <option value="RGB">RGB (Band 2,3, and 4)</option>
+                <option value="Band5">Band 5 (NIR)</option>
+                <option value="Band6">Band 6 (SWIR-1)</option>
+                <option value="Band7">Band 7 (SWIR-2)</option>
+                <option value="Band8">Band 8 (QA Band)</option>
+                <option value="Band9">Band 9 (MERIT DEM Band)</option>
+                <option value="Band10">Band 10 (Copernicus DEM)</option>
+                <option value="Band11">Band 11 (ESA World Cover Map Band)</option>
+                <option value="Band12">Band 12 (Water Occurrence Probability)</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Get the Output">
+        </form>
+
+        {% if imagee %}
+        <div class="result-image">
+            <h2 style="color:white; border:3px solid white;">Result Image:</h2>
+            <img src="{{ url_for('static', filename=imagee) }}" alt="Result Image"
+             style="max-width: 500px; border:10px solid white;">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
